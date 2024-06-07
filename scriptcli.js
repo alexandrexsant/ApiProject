@@ -36,6 +36,14 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
         console.error("Erro ao procurar dados do clima:", error);
     }
 });
+// Atribui o valor padrão "São Paulo" ao campo de entrada
+document.getElementById('city_name').value = 'São Paulo';
+
+// Aguarda o carregamento total da página
+window.addEventListener('DOMContentLoaded', async () => {
+    // Busca automaticamente o clima de São Paulo
+    await getWeather('São Paulo');
+});
 
 function showInfo(json) {
     showAlert('');
