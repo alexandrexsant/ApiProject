@@ -2,7 +2,7 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const cityName = document.querySelector('#city_name').value;
-
+    cityName = 'São paulo'
     if (!cityName) {
         document.querySelector("#weather").classList.remove('show');
         showAlert('É precisO digitar uma cidade.');
