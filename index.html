@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Consulta de CEP e Previsão do Tempo</title>
+    <style>
+        /* Estilo para centralizar o conteúdo */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+            color: white; /* Opcional: para garantir que o texto fique visível *
+        }
+        /* Estilo opcional para os containers */
+        #container, #weather-container {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Consulta de CEP com ViaCEP</h1>
+        <form id="cep_search">
+            <input type="text" id="cep" placeholder="Digite o CEP">
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="cep_return"></div>
+    </div>
+
+    <div id="weather-container">
+        <h1>Previsão do Tempo</h1>
+        <form id="search">
+            <input type="text" id="city_name" placeholder="Digite o nome da cidade">
+            <button type="submit">Buscar Clima</button>
+        </form>
+        <div id="weather" class="show">
+            <h2 id="title"></h2>
+            <p id="temp_value"></p>
+            <p id="temp_description"></p>
+            <img id="temp_img" src="" alt="Condição do tempo">
+            <p>Temp. Máxima: <span id="temp_max"></span></p>
+            <p>Temp. Mínima: <span id="temp_min"></span></p>
+            <p>Umidade: <span id="humidity"></span></p>
+            <p>Vento: <span id="wind"></span></p>
+        </div>
+        <div id="alert"></div>
+    </div>
+
+    <script src="scriptcep.js"></script>
+    <script src="scriptcli.js"></script>
+</body>
+</html>
+
+
