@@ -51,7 +51,30 @@
         <div id="alert"></div>
     </div>
     <script src="scriptcep.js"></script>
-    <script src="scriptcli.js"></script>   
+    <script src="scriptcli.js"></script>
+    <script>
+        // Carregar automaticamente as informações do clima de São Paulo ao carregar a página
+        window.addEventListener('DOMContentLoaded', async () => {
+            const cityName = 'São Paulo';
+            try {
+                const results = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(cityName)}&appid=723ad0e8726a378f363bc0b093464f44&units=metric&lang=pt_br`);
+                const json = await results.json();
+                showInfo({
+                    city: json.name,
+                    country: json.sys.country,
+                    temp: json.main.temp,
+                    tempMax: json.main.temp_max,
+                    tempMin: json.main.temp_min,
+                    description: json.weather[0].description,
+                    tempIcon: json.weather[0].icon,
+                    windSpeed: json.wind.speed,
+                    humidity: json.main.humidity,
+                });
+            } catch (error) {
+                console.error("Erro ao procurar dados do clima:", error);
+            }
+        });
+    </script>   
 </body>
 </html>
 
