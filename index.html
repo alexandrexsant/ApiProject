@@ -53,17 +53,7 @@
     </div>
     <script src="scriptcep.js"></script>
     <script src="scriptcli.js"></script>
-    <script>
-        // Preenche o campo de entrada com "São Paulo"
-        document.getElementById('city_name').value = 'São Paulo';
-
-        // Aciona a busca pelo clima de São Paulo ao carregar a página
-        window.addEventListener('DOMContentLoaded', async () => {
-            // Obtém o nome de São Paulo do campo de entrada e busca o clima
-            const cityName = document.getElementById('city_name').value;
-            await getWeather(cityName);
-        });
-    </script>
+    
 </body>
 </html>
 
