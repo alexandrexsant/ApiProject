@@ -53,17 +53,8 @@
     
     <script src="scriptcep.js"></script>
     <script src="scriptcli.js"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', async () => {
-            const cityName = 'São Paulo'; // Define o nome da cidade
-            try {
-                const results = await fetchWeather(cityName);
-                showInfo(results);
-            } catch (error) {
-                console.error("Erro ao buscar informações do clima:", error);
-            }
-        });
-    </script>
+    <script src="scriptload.js"></script>
+   
 </body>
 </html>
 
