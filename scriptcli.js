@@ -1,7 +1,3 @@
-window.addEventListener('DOMContentLoaded', (event) => {
-    // Quando a página é totalmente carregada, definimos o valor padrão do campo de entrada
-    document.getElementById('city_name').value = 'São Paulo';
-});
 
 document.querySelector('#search').addEventListener('submit', async (event) => {
     event.preventDefault();
