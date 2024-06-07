@@ -56,10 +56,4 @@ function showAlert(msg) {
     document.querySelector('#alert').innerHTML = msg;
 }
 
-// Definindo o valor do campo de entrada para "São Paulo"
-document.querySelector('#city_name').value = 'São Paulo';
 
-// Disparando o evento de submissão do formulário automaticamente quando a página for carregada
-window.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#search').dispatchEvent(new Event('submit'));
-});
