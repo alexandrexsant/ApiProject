@@ -58,7 +58,7 @@
             const cityName = 'São Paulo'; // Define o nome da cidade
             try {
                 const results = await fetchWeather(cityName);
-                showWeatherInfo(results);
+                showInfo(results);
             } catch (error) {
                 console.error("Erro ao buscar informações do clima:", error);
             }
