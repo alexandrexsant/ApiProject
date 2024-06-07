@@ -1,22 +1,28 @@
-
+// Adiciona um evento para a busca do clima
 document.querySelector('#search').addEventListener('submit', async (event) => {
-    event.preventDefault();
+    event.preventDefault(); 
 
+    // Pega o nome da cidade digitada pelo usuário
     const cityName = document.querySelector('#city_name').value;
-    if (!cityName) {
+    if (!cityName) { // Verifica se o campo esta vazio
         document.querySelector("#weather").classList.remove('show');
-        showAlert('É precisO digitar uma cidade.');
-        return;
+        // Remove a classe 'show' da div do clima para ocultá-la
+        showAlert('É preciso digitar uma cidade.');        
+        // Mostra uma msg para o usuário digitar uma cidade
+        return; // Sai da função
     }
 
-    const apiKey = '723ad0e8726a378f363bc0b093464f44';
+    const apiKey = '723ad0e8726a378f363bc0b093464f44'; // Chave da API OpenWeatherMap
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(cityName)}&appid=${apiKey}&units=metric&lang=pt_br`;
-
+    // URL da API para buscar as informações do clima da cidade
     try {
+        // Realiza uma requisição para a API OpenWeatherMap
         const results = await fetch(apiUrl);
+        // Converte a resposta da requisição para JSON
         const json = await results.json();
 
-        if (json.cod === 200) {
+        if (json.cod === 200) { // Verifica se a resposta da API indica sucesso
+            // Mostra as informações do clima na página
             showInfo({
                 city: json.name,
                 country: json.sys.country,
@@ -30,18 +36,22 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
             });
         } else {
             document.querySelector("#weather").classList.remove('show');
+            // Mostra um alerta de que a cidade não foi encontrada
             showAlert('Não foi encontrado.');
         }
-    } catch (error) {
-        console.error("Erro ao procurar dados do clima:", error);
+    } catch (error) { // Captura erros durante a requisição para a API
+        console.error("Erro ao procurar dados do clima:", error); // Exibe o erro no console
     }
 });
 
+// Função para exibir as informações do clima na página
 function showInfo(json) {
-    showAlert('');
+    showAlert(''); // Remove qualquer alerta anterior
 
+    // Adiciona a classe 'show' à div do clima para exibi-la
     document.querySelector("#weather").classList.add('show');
 
+    // Atualiza os elementos HTML com as informações do clima atual
     document.querySelector('#title').innerHTML = `${json.city}, ${json.country}`;
     document.querySelector('#temp_value').innerHTML = `${json.temp.toFixed(1).toString().replace('.', ',')} <sup>°C</sup>`;
     document.querySelector('#temp_description').innerHTML = `${json.description}`;
@@ -52,8 +62,7 @@ function showInfo(json) {
     document.querySelector('#wind').innerHTML = `${json.windSpeed.toFixed(1)} km/h`;
 }
 
+// Função para exibir alerta
 function showAlert(msg) {
-    document.querySelector('#alert').innerHTML = msg;
+    document.querySelector('#alert').innerHTML = msg; // Atualiza o conteúdo de alerta
 }
-
-
