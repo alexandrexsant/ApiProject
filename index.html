@@ -50,13 +50,18 @@
         </div>
         <div id="alert"></div>
     </div>
+    
     <script src="scriptcep.js"></script>
     <script src="scriptcli.js"></script>
     <script>
-        // Função para buscar o clima de São Paulo ao carregar a página
         window.addEventListener('DOMContentLoaded', async () => {
-            const cityName = document.getElementById('city_name').value;
-            await getWeather(cityName);
+            const cityName = 'São Paulo'; // Define o nome da cidade
+            try {
+                const results = await fetchWeather(cityName);
+                showWeatherInfo(results);
+            } catch (error) {
+                console.error("Erro ao buscar informações do clima:", error);
+            }
         });
     </script>
 </body>
