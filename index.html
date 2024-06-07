@@ -25,7 +25,6 @@
 <body>
     <div id="container">
         <h1>Consulta de CEP com ViaCEP</h1>
-        <script src="scriptpreload.js"></script>
         <form id="cep_search">
             <input type="text" id="cep" placeholder="Digite o CEP">
             <button type="submit">Consultar</button>
@@ -51,9 +50,19 @@
         </div>
         <div id="alert"></div>
     </div>
+    
     <script src="scriptcep.js"></script>
     <script src="scriptcli.js"></script>
-    
+    <script>
+        // Atribui o valor padrão "São Paulo" ao campo de entrada
+        document.getElementById('city_name').value = 'São Paulo';
+        
+        // Aguarda o carregamento total da página
+        window.addEventListener('DOMContentLoaded', async () => {
+            // Busca automaticamente o clima de São Paulo
+            await getWeather('São Paulo');
+        });
+    </script>
 </body>
 </html>
 
