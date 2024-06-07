@@ -36,6 +36,20 @@ document.querySelector('#search').addEventListener('submit', async (event) => {
         console.error("Erro ao procurar dados do clima:", error);
     }
 });
+function showLoad(json) {
+    showAlert('');
+
+    document.querySelector("#weather").classList.add('show');
+
+    document.querySelector('#title').innerHTML = `${json.country ? json.country : 'Brasil'}`; // Define o país como "Brasil" caso não seja fornecido
+    document.querySelector('#temp_value').innerHTML = `${json.temp.toFixed(1).toString().replace('.', ',')} <sup>°C</sup>`;
+    document.querySelector('#temp_description').innerHTML = `${json.description}`;
+    document.querySelector('#temp_img').setAttribute('src', `https://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
+    document.querySelector('#temp_max').innerHTML = `${json.tempMax.toFixed(1).toString().replace('.', ',')} <sup>°C</sup>`;
+    document.querySelector('#temp_min').innerHTML = `${json.tempMin.toFixed(1).toString().replace('.', ',')} <sup>°C</sup>`;
+    document.querySelector('#humidity').innerHTML = `${json.humidity}%`;
+    document.querySelector('#wind').innerHTML = `${json.windSpeed.toFixed(1)} km/h`;
+}
 
 function showInfo(json) {
     showAlert('');
